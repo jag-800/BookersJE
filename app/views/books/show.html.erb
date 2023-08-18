@@ -26,9 +26,9 @@
         
         <div class="">
             <p>
-              <%= link_to edit_user_path(current_user), class:"btn btn-outline-secondary btn-block" do %>
+             <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary btn-block" do %>
                 <i class="fas fa-user-cog"></i>
-              <% end %>
+             <% end %>
             </p>
         </div>
       </div>
@@ -56,12 +56,17 @@
               <%= image_tag @book.user.get_profile_image(100,100) %>
               <br><%= link_to @user.name, user_path(@user.id) %>
             </td>
-            <td><%= link_to book_path(@book.id) do %>
-              <%= @book.title %><% end %></td>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
             <td><%= @book.body %></td>
-            <td><% if @book.user == current_user %>
+            <td>
+              <% if @book.user == current_user %>
                 <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success" %>
-              <% end %></td>
+              <% end %>
+            </td>
             <td>
               <% if @book.user == current_user %>
                 <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？",  class:"btn btn-danger" %>

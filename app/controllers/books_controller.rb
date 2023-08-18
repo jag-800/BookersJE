@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :show, :index]
+  before_action :is_matching_login_users_post, only: [:edit, :update]
+  
   def index
     @book = Book.new
     @books = Book.all
@@ -48,6 +51,13 @@ class BooksController < ApplicationController
   
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+  
+  def is_matching_login_users_post
+    post = Book.find(params[:id])
+    unless post.user_id == current_user.id
+      redirect_to books_path
+    end
   end
 end
 
