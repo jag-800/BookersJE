@@ -15,7 +15,7 @@
         <tbody>
           <tr>
             <td>
-              <%= image_tag @book.user.get_profile_image(100,100) %>
+              <%= image_tag @book.user.get_profile_image(50,50) %>
               <br><%= link_to @user.name, user_path(@user.id) %>
             </td>
             <td>
@@ -38,7 +38,7 @@
               <% if @book.favorited_by?(current_user) %>
                 <p>
                   <%= link_to book_favorites_path(@book), method: :delete do %>
-                    <i class="fas fa-heart"></i><%= @book.favorites.count %>
+                    <span class="text-danger"><i class="fas fa-heart"></i><%= @book.favorites.count %></span>
                   <% end %>
                 </p>
               <% else %>
@@ -56,19 +56,25 @@
         </tbody>
       </table>
       
-      <div>
-        <% @book.book_comments.each do |book_comment| %>
-          <p><%= image_tag book_comment.user.get_profile_image(100,100) %></p>
-          <%= book_comment.user.name %>
-          <p><%= book_comment.comment %></p>
-          <% if book_comment.user == current_user %>
-            <%= link_to "Delete", book_book_comment_path(book_comment.book, book_comment), method: :delete,  class:"btn btn-danger" %>
-          <% end %>
-        <% end %>
-      </div>
+      <table>
+        <tbody>
+          <% @book.book_comments.each do |book_comment| %><tr>
+            <td>
+              <%= image_tag book_comment.user.get_profile_image(50,50) %>
+              <br><%= link_to book_comment.user.name, user_path(book_comment.user.id) %>
+            </td>  
+            <td><%= book_comment.comment %></td>
+            <td>
+              <% if book_comment.user == current_user %>
+                <%= link_to "Delete", book_book_comment_path(book_comment.book, book_comment), method: :delete,  class:"btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr><% end %>
+        </tbody>
+      </table>
       <div>
         <%= form_with model: [@book, @book_comment] do |f| %>
-          <%= f.text_area :comment, row: '5' %>
+          <%= f.text_area :comment, autofocus:true, class:"form-control" %>
           <%= f.submit "送信" %>
         <% end %>
       </div>

@@ -63,7 +63,7 @@
           <% @books.each do |book| %><tr>
             <td>
               <%= link_to user_path(@user.id) do %>
-                <%= image_tag book.user.get_profile_image(100,100) %>
+                <%= image_tag book.user.get_profile_image(50,50) %>
               <% end %>
             </td>
             <td>
@@ -87,7 +87,7 @@
                 </p>
               <% end %>
             </td>
-            <td>コメント数: <%= @book.book_comments.count %></td>
+            <td>コメント数: <%= book.book_comments.count %></td>
           </tr><% end %>
           
         </tbody>
