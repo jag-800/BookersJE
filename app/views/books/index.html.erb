@@ -16,6 +16,7 @@
       <% end %>
      <!-- ユーザーの詳細 -->    
      <%= render 'user_book', user: current_user, book: @book %>
+    </div>
 
     
     <div class="col-md-8 offset-md-1">
@@ -41,6 +42,21 @@
               <% end %>
             </td>
             <td><%= book.body %></td>
+            <td>
+              <% if book.favorited_by?(current_user) %>
+                <p>
+                  <%= link_to book_favorites_path(book), method: :delete do %>
+                    <span class="text-danger"><i class="fas fa-heart"></i><%= book.favorites.count %></span>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>
+                  <%= link_to book_favorites_path(book), method: :post do %>
+                    <i class="fas fa-heart"></i><%= book.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+            </td>
           </tr><% end %>
         </tbody>
       </table>
