@@ -6,6 +6,8 @@ class FavoritesController < ApplicationController
     favorite.save
     if request.referer&.ends_with?(book_path(book))
       redirect_to book_path(book)
+    elsif request.referer&.ends_with?(user_path(current_user))
+      redirect_to user_path(current_user)
     else
       redirect_to books_path
     end
@@ -17,6 +19,8 @@ class FavoritesController < ApplicationController
     favorite.destroy
     if request.referer&.ends_with?(book_path(book))
       redirect_to book_path(book)
+    elsif request.referer&.ends_with?(user_path(current_user))
+      redirect_to user_path(current_user)
     else
       redirect_to books_path
     end
