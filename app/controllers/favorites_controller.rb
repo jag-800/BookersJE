@@ -4,25 +4,13 @@ class FavoritesController < ApplicationController
     book = Book.find(params[:book_id])
     favorite = current_user.favorites.new(book_id: book.id)
     favorite.save
-    if request.referer&.ends_with?(book_path(book))
-      redirect_to book_path(book)
-    elsif request.referer&.ends_with?(user_path(current_user))
-      redirect_to user_path(current_user)
-    else
-      redirect_to books_path
-    end
+    redirect_to request.referer
   end
 
   def destroy
     book = Book.find(params[:book_id])
     favorite = current_user.favorites.find_by(book_id: book.id)
     favorite.destroy
-    if request.referer&.ends_with?(book_path(book))
-      redirect_to book_path(book)
-    elsif request.referer&.ends_with?(user_path(current_user))
-      redirect_to user_path(current_user)
-    else
-      redirect_to books_path
-    end
+    redirect_to request.referer
   end
 end

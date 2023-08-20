@@ -59,7 +59,6 @@
           </tr>
         </thead>
         <tbody>
-          
           <% @books.each do |book| %><tr>
             <td>
               <%= link_to user_path(@user.id) do %>
@@ -89,7 +88,6 @@
             </td>
             <td>コメント数: <%= book.book_comments.count %></td>
           </tr><% end %>
-          
         </tbody>
       </table>
     </div>
