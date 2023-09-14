@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   
   
   def after_signed_in_path_for(resource)
-    about_path
+    books_path
   end
   
   def after_signed_out_path_for(resource)

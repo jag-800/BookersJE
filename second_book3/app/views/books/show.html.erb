@@ -1,2 +1,21 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1>User info</h1>
+
+<h1>Book detail</h1>
+<%= image_tag @book.get_image, size: "50x50" %>
+<%= link_to do %>
+  <%= @book.title %>
+<% end %>
+<%= @book.body %>
+<% if @book.user == current_user %>
+  <%= link_to "Edit", edit_book_path(@book.id) %>
+  <%= link_to "Destroy", book_path(@book.id), method: :delete %>
+<% end %>
+
+<h1>New book</h1>
+<%= form_with model: @book_new do |f| %>
+  <label>Title</label>
+  <%= f.text_field :title%>
+  <label>Opinion</label>
+  <%= f.text_area :body %>
+  <%= f.submit '投稿' %>
+<% end %>
