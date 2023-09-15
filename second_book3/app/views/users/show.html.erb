@@ -1,2 +1,15 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row mt-3">
+    
+    <div class="col-md-3">
+      <%= render 'info' %>
+
+      <%= render 'books/form' %>
+    </div>
+    
+    <div class="col-md-8 offset-md-1">
+      <%= render 'books/list_book' %>
+    </div>
+    
+  </div>
+</div>

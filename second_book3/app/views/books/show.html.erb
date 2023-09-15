@@ -1,21 +1,21 @@
-<h1>User info</h1>
+<%= render 'users/info' %>
 
-<h1>Book detail</h1>
-<%= image_tag @book.get_image, size: "50x50" %>
-<%= link_to do %>
-  <%= @book.title %>
-<% end %>
-<%= @book.body %>
-<% if @book.user == current_user %>
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  <%= link_to "Destroy", book_path(@book.id), method: :delete %>
-<% end %>
+<%= render 'form' %>
 
-<h1>New book</h1>
-<%= form_with model: @book_new do |f| %>
-  <label>Title</label>
-  <%= f.text_field :title%>
-  <label>Opinion</label>
-  <%= f.text_area :body %>
-  <%= f.submit '投稿' %>
-<% end %>
+<%= render 'list_book' %>
+
+<div class="container px-5 px-sm-0">
+  <div class="row mt-3">
+    
+    <div class="col-md-3">
+      <%= render 'users/info' %>
+
+      <%= render 'form' %>
+    </div>
+    
+    <div class="col-md-8 offset-md-1">
+      <%= render 'list_book' %>
+    </div>
+    
+  </div>
+</div>
