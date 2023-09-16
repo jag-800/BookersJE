@@ -1,5 +1,5 @@
 <h2>User info</h2>
-<%= image_tag current_user.get_profile_image(100,100) %>
+<%= image_tag user.get_profile_image(100,100) %>
 <table class="table">
   <tbody>
     <tr>
@@ -7,7 +7,7 @@
         <label>name</label>
       </td>
       <td>
-        <%= current_user.name %>
+        <%= user.name %>
       </td>
     </tr>
     <tr>
@@ -15,8 +15,14 @@
         <label>introduction</label>
       </td>
       <td>
-        <%= current_user.body %>
+        <%= user.introduction %>
       </td>
     </tr>
   </tbody>
 </table>
+
+<p>
+  <%= link_to edit_user_path(user), class:"btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</p>
