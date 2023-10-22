@@ -4,7 +4,7 @@ class RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     # relationship = current_user.relationships.new(followed_id: user.id)
     # relationship.save
-    user.follow(current_user)
+    current_user.follow(user)
     redirect_to request.referer
   end
 
@@ -12,7 +12,7 @@ class RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     # relationship = current_user.relationships.find_by(followed_id: user.id)
     # relationship.destroy
-    user.unfollow(current_user)
+    current_user.unfollow(user)
     redirect_to request.referer
   end
 
