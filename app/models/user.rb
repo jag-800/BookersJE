@@ -14,6 +14,18 @@ class User < ApplicationRecord
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
+  
+  def follow(user)
+    relationships.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    relationships.find(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
 
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
