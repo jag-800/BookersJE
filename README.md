@@ -1,24 +1,5 @@
-# README
+# 応用課題 4.5.6
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 4 フォロー・フォロワー機能
+## 5 検索機能
+## 6 非同期　フォロー・フォロワー機能
