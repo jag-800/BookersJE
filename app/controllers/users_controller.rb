@@ -2,7 +2,14 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :show, :index]
   before_action :is_matching_login_user, only: [:edit, :update]
   
+  def ransack
+    @q = User.ransack(params[:q])
+    @results = @q.result
+    @book = Book.new
+  end
+  
   def index
+    @q = User.ransack(params[:q])
     @users = User.all
     @book = Book.new
   end
