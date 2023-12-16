@@ -5,7 +5,9 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
-    # @user = current_user
+    if params[:tag_name]
+      @books = Book.tagged_with("#{params[:tag_name]}").page(params[:page]).per(5)
+    end
   end
 
   def create
@@ -51,7 +53,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :tag_list)
   end
 
   def is_matching_login_user

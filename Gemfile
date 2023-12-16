@@ -64,4 +64,5 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 
 gem 'dotenv-rails'
-
+gem 'acts-as-taggable-on', '~> 9.0'
+gem 'kaminari','~> 1.2.1'

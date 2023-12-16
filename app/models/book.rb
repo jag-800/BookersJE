@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
-
+  
+  acts_as_taggable_on :tags
   has_one_attached :image
   belongs_to :user
   has_many :book_comments, dependent: :destroy
