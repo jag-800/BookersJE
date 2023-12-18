@@ -23,7 +23,19 @@
 
     <div class="col-md-8 offset-md-1">
       <%= render 'list_book' %>
+      
+      <div class="slider">
+        <% @boards.each do |board| %>
+          <p>
+            <%= link_to user_path(board.user.id) do %>
+              <%= image_tag board.user.get_profile_image(300,300), width: '400', height: '400', class: 'slider-item rounded' %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
     </div>
+
+    
 
   </div>
 </div>
