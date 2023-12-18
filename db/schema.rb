@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 2023_12_16_162233) do
     t.string "name"
     t.text "introduction"
     t.integer "age"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

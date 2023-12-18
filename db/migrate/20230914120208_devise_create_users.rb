@@ -34,6 +34,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :name
       t.text :introduction
       t.integer :age
+      t.float :latitude
+      t.float :longitude
 
 
       t.timestamps null: false
