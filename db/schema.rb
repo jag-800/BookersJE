@@ -110,6 +110,11 @@ ActiveRecord::Schema.define(version: 2023_12_16_162233) do
     t.string "name"
     t.text "introduction"
     t.integer "age"
+    t.integer "postcode"
+    t.integer "prefecture_code"
+    t.string "address_city"
+    t.string "address_street"
+    t.string "address_building"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", precision: 6, null: false

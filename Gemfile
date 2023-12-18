@@ -68,4 +68,5 @@ gem 'acts-as-taggable-on', '~> 9.0'
 gem 'kaminari','~> 1.2.1'
 gem 'ransack'
 
+gem 'jp_prefecture'
 gem 'geocoder'
