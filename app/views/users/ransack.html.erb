@@ -12,7 +12,7 @@
     </div>
     
     <div class="col-md-8 offset-md-1">
-      <%= link_to 'User一覧に', users_path %>
+      <%= link_to 'User一覧に戻る', users_path %>
       
       <h2>Users</h2>
       <table class="table">
@@ -20,6 +20,7 @@
           <tr>
             <th>image</th>
             <th>name</th>
+            <th><%= sort_link(@q, :age, "Age") %></th>
             <th colspan="4"></th>
           </tr>
         </thead>
@@ -27,6 +28,7 @@
           <% @results.each do |user| %><tr>
             <td><%= image_tag user.get_profile_image(50,50) %></td>
             <td><%= user.name %></td>
+            <td><%= user.age %></td>
             <td>フォロー数: <%= user.followings.count %></td>
             <td>フォロワー数: <%= user.followers.count %></td>
             <td>

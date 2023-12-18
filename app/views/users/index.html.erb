@@ -17,6 +17,13 @@
         <%= f.label :name_cont, 'ユーザー名' %>
         <%= f.search_field :name_cont %>
         <br>
+        <%= f.radio_button :age_lteq, '' %>指定しない
+        <%= f.radio_button :age_lteq, '10' %>10歳以下
+        <%= f.radio_button :age_lteq, '20' %>20歳以下
+        <%= f.radio_button :age_lteq, '30' %>30歳以下
+        <%= f.radio_button :age_lteq, '40' %>40歳以下
+        <%= f.radio_button :age_gteq, '50' %>50歳以上
+        <br>
         <%= f.submit '検索' %>
       <% end %>
       
@@ -26,6 +33,9 @@
           <tr>
             <th>image</th>
             <th>name</th>
+　　　　　　<!--これで矢印を消せる-->
+            <!--<th><%#= sort_link(@q, :age, "Age", hide_indicator: true) %></th>-->
+            <th><%= sort_link(@q, :age, "Age") %></th>
             <th colspan="4"></th>
           </tr>
         </thead>
@@ -33,6 +43,7 @@
           <% @users.each do |user| %><tr>
             <td><%= image_tag user.get_profile_image(50,50) %></td>
             <td><%= user.name %></td>
+            <td><%= user.age %></td>
             <td>フォロー数: <%= user.followings.count %></td>
             <td>フォロワー数: <%= user.followers.count %></td>
             <td>
